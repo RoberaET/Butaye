@@ -67,24 +67,27 @@ noBtn.addEventListener('click', function (e) {
         yesBtn.style.maxWidth = '600px';
     }
 
-    // After 8+ clicks, make it fill the ENTIRE screen
-    if (noClickCount > 8) {
+    // After 5+ clicks, make it fill the ENTIRE screen (Force styles!)
+    if (noClickCount > 5) {
+        // Move button to body to escape any container constraints
+        document.body.appendChild(yesBtn);
+
         yesBtn.style.position = 'fixed';
         yesBtn.style.top = '0';
         yesBtn.style.left = '0';
         yesBtn.style.right = '0';
         yesBtn.style.bottom = '0';
-        yesBtn.style.width = '100%';
-        yesBtn.style.height = '100%';
-        yesBtn.style.borderRadius = '0';
+        yesBtn.style.width = '100vw';
+        yesBtn.style.height = '100vh';
+        yesBtn.style.setProperty('border-radius', '0', 'important');
         yesBtn.style.transform = 'none';
-        yesBtn.style.padding = '0';
+        yesBtn.style.setProperty('padding', '0', 'important');
         yesBtn.style.margin = '0';
         yesBtn.style.display = 'flex';
         yesBtn.style.justifyContent = 'center';
         yesBtn.style.alignItems = 'center';
         yesBtn.style.fontSize = 'clamp(3rem, 10vw, 5rem)';
-        yesBtn.style.zIndex = '99999';
+        yesBtn.style.zIndex = '999999';
     }
 
     // Shrink the "No" button as "Yes" grows
