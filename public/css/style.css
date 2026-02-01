@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffc3d5 0%, #ffb3c6 50%, #ffa8bb 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated hearts in background */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hearts-background::before,
+.hearts-background::after {
+    content: '💕';
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.3;
+    animation: float 15s infinite;
+}
+
+.hearts-background::before {
+    left: 10%;
+    top: -10%;
+    animation-delay: 0s;
+}
+
+.hearts-background::after {
+    right: 15%;
+    top: -10%;
+    animation-delay: 7s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.content {
+    background: transparent;
+    border-radius: 30px;
+    padding: 50px 40px;
+    text-align: center;
+}
+
+.bear-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 30px;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 10px 20px rgba(255, 105, 180, 0.2));
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.valentine-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: #ff1493;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+    line-height: 1.4;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    padding: 0 20px;
+}
+
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+    color: white;
+    transform-origin: center;
+    z-index: 2;
+}
+
+.btn-yes:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(255, 20, 147, 0.4);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #ddd, #bbb);
+    color: #666;
+    z-index: 1;
+}
+
+.btn-no:hover {
+    background: linear-gradient(135deg, #ccc, #aaa);
+}
+
+/* Animation for growing Yes button */
+.grow {
+    animation: grow 0.5s ease forwards;
+}
+
+@keyframes grow {
+    to {
+        transform: scale(var(--scale-factor));
+    }
+}
+
+/* Responsive design - Mobile optimized */
+@media (max-width: 768px) {
+    body {
+        padding-top: 40px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .content {
+        padding: 30px 20px;
+    }
+
+    .valentine-text {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        line-height: 1.3;
+    }
+
+    .bear-image {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 25px;
+    }
+
+    .buttons-container {
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 15px 30px;
+        min-height: 48px;
+        min-width: 100px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 30px;
+    }
+
+    .valentine-text {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+
+    .bear-image {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    .buttons-container {
+        gap: 12px;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 12px 24px;
+        min-height: 44px;
+        min-width: 90px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .valentine-text {
+        font-size: 1.3rem;
+    }
+
+    .bear-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        min-width: 80px;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        padding-top: 20px;
+    }
+
+    .bear-image {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
+    .valentine-text {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        padding: 20px 15px;
+    }
+}
+
+/* Prevent text selection on touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+    .btn,
+    .valentine-text,
+    .bear-image {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+    }
+}
