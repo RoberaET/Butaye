@@ -112,37 +112,59 @@ yesBtn.addEventListener('click', function () {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #ff1493, #ff69b4);
+        background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffc0cb 100%);
         z-index: 10000;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        animation: fadeIn 0.5s ease;
+        animation: fadeIn 0.6s ease;
+        overflow: hidden;
     `;
 
     celebration.innerHTML = `
-        <h1 style="
-            font-family: 'Pacifico', cursive;
-            font-size: 4rem;
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-            animation: heartbeat 1.5s infinite;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-        ">Yay! I knew it! 💕</h1>
-        <p style="
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            color: white;
-            text-align: center;
-            animation: fadeIn 1s ease;
-        ">You made me the happiest! 🥰✨</p>
         <div style="
-            margin-top: 30px;
-            font-size: 3rem;
-            animation: bounce 1s infinite;
-        ">❤️💖💕💗💝</div>
+            position: relative;
+            text-align: center;
+            animation: slideUp 0.8s ease-out;
+            z-index: 10001;
+            max-width: 90%;
+            padding: 20px;
+        ">
+            <img src="images/happy.jpg" alt="Happy" style="
+                width: min(280px, 70vw);
+                height: min(280px, 70vw);
+                object-fit: cover;
+                border-radius: 50%;
+                border: 8px solid white;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                margin-bottom: 30px;
+                animation: heartbeat 1.5s infinite, rotateIn 0.8s ease-out;
+            ">
+            <h1 style="
+                font-family: 'Pacifico', cursive;
+                font-size: clamp(2rem, 8vw, 4rem);
+                color: white;
+                text-align: center;
+                margin-bottom: 20px;
+                animation: pulse 2s infinite;
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+                line-height: 1.2;
+            ">Yay! I knew it! 💕</h1>
+            <p style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(1.2rem, 4vw, 2rem);
+                color: white;
+                text-align: center;
+                animation: fadeIn 1.2s ease;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            ">You made me the happiest! 🥰✨</p>
+            <div style="
+                margin-top: 25px;
+                font-size: clamp(2rem, 6vw, 3.5rem);
+                animation: pulse 1.5s infinite;
+            ">❤️💖💕💗💝</div>
+        </div>
     `;
 
     document.body.appendChild(celebration);
@@ -151,7 +173,7 @@ yesBtn.addEventListener('click', function () {
     createConfetti();
 });
 
-// Shake animation for No button
+// Animations for the page
 const style = document.createElement('style');
 style.textContent = `
     @keyframes shake {
@@ -168,6 +190,39 @@ style.textContent = `
     @keyframes heartbeat {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.1); }
+    }
+    
+    @keyframes slideUp {
+        from { 
+            transform: translateY(50px); 
+            opacity: 0;
+        }
+        to { 
+            transform: translateY(0); 
+            opacity: 1;
+        }
+    }
+    
+    @keyframes rotateIn {
+        from { 
+            transform: rotate(-180deg) scale(0.5);
+            opacity: 0;
+        }
+        to { 
+            transform: rotate(0deg) scale(1);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { 
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% { 
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
     }
 `;
 document.head.appendChild(style);

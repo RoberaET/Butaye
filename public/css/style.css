@@ -189,52 +189,62 @@ body {
 /* Responsive design - Mobile optimized */
 @media (max-width: 768px) {
     body {
-        padding-top: 40px;
+        padding-top: 60px;
+        align-items: flex-start;
     }
 
     .container {
-        padding: 10px;
+        padding: 15px;
+        max-width: 100%;
     }
 
     .content {
         padding: 30px 20px;
+        width: 100%;
     }
 
     .valentine-text {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         margin-bottom: 30px;
-        line-height: 1.3;
+        line-height: 1.4;
+        word-break: break-word;
     }
 
     .bear-image {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
         margin-bottom: 25px;
     }
 
     .buttons-container {
         gap: 15px;
-        padding: 0 10px;
+        padding: 0 5px;
+        flex-wrap: wrap;
+        /* Allow wrapping if needed but try to keep inline */
+        justify-content: center;
+        width: 100%;
     }
 
     .btn {
-        font-size: 1.1rem;
-        padding: 15px 30px;
+        font-size: 1rem;
+        padding: 14px 24px;
         min-height: 48px;
-        min-width: 100px;
+        /* Touch friendly */
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
+        margin: 5px;
+        /* Add margin for wrapping */
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding-top: 30px;
+        padding-top: 40px;
     }
 
     .valentine-text {
         font-size: 1.5rem;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .bear-image {
@@ -244,16 +254,13 @@ body {
     }
 
     .buttons-container {
-        gap: 12px;
-        flex-direction: row;
-        justify-content: center;
+        gap: 10px;
     }
 
     .btn {
-        font-size: 1rem;
-        padding: 12px 24px;
+        font-size: 0.95rem;
+        padding: 12px 20px;
         min-height: 44px;
-        min-width: 90px;
     }
 }
 
@@ -270,8 +277,7 @@ body {
 
     .btn {
         font-size: 0.9rem;
-        padding: 10px 20px;
-        min-width: 80px;
+        padding: 10px 16px;
     }
 }
 
@@ -282,18 +288,18 @@ body {
     }
 
     .bear-image {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 15px;
+        width: 90px;
+        height: 90px;
+        margin-bottom: 10px;
     }
 
     .valentine-text {
         font-size: 1.4rem;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     .content {
-        padding: 20px 15px;
+        padding: 15px;
     }
 }
 
@@ -306,5 +312,15 @@ body {
         -webkit-user-select: none;
         user-select: none;
         -webkit-touch-callout: none;
+    }
+
+    /* Remove hover effects on touch devices to prevent sticky states */
+    .btn:hover {
+        transform: none;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn:active {
+        transform: scale(0.95);
     }
 }
