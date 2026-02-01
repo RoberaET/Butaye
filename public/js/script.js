@@ -67,6 +67,17 @@ noBtn.addEventListener('click', function (e) {
         yesBtn.style.maxWidth = '600px';
     }
 
+    // After 8+ clicks, make it fill the ENTIRE screen
+    if (noClickCount > 8) {
+        yesBtn.style.width = '100vw';
+        yesBtn.style.height = '100vh';
+        yesBtn.style.borderRadius = '0';
+        yesBtn.style.top = '0';
+        yesBtn.style.left = '0';
+        yesBtn.style.transform = 'none';
+        yesBtn.style.fontSize = '3rem';
+    }
+
     // Shrink the "No" button as "Yes" grows
     if (noPadding > 8) {  // Min padding of 8px
         noPadding -= 1;
