@@ -179,7 +179,7 @@ yesBtn.addEventListener('click', function () {
     document.body.appendChild(celebration);
 
     // Play background music
-    const audio = new Audio('audio/song.mp3');
+    const audio = new Audio('audio/lauv.mp3');
     audio.loop = true;
     audio.volume = 0.5;
     audio.play().catch(e => console.log("Audio play failed (user interaction needed first):", e));
