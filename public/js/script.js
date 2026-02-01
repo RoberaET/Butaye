@@ -69,13 +69,22 @@ noBtn.addEventListener('click', function (e) {
 
     // After 8+ clicks, make it fill the ENTIRE screen
     if (noClickCount > 8) {
-        yesBtn.style.width = '100vw';
-        yesBtn.style.height = '100vh';
-        yesBtn.style.borderRadius = '0';
+        yesBtn.style.position = 'fixed';
         yesBtn.style.top = '0';
         yesBtn.style.left = '0';
+        yesBtn.style.right = '0';
+        yesBtn.style.bottom = '0';
+        yesBtn.style.width = '100%';
+        yesBtn.style.height = '100%';
+        yesBtn.style.borderRadius = '0';
         yesBtn.style.transform = 'none';
-        yesBtn.style.fontSize = '3rem';
+        yesBtn.style.padding = '0';
+        yesBtn.style.margin = '0';
+        yesBtn.style.display = 'flex';
+        yesBtn.style.justifyContent = 'center';
+        yesBtn.style.alignItems = 'center';
+        yesBtn.style.fontSize = 'clamp(3rem, 10vw, 5rem)';
+        yesBtn.style.zIndex = '99999';
     }
 
     // Shrink the "No" button as "Yes" grows
@@ -168,6 +177,12 @@ yesBtn.addEventListener('click', function () {
     `;
 
     document.body.appendChild(celebration);
+
+    // Play background music
+    const audio = new Audio('audio/song.mp3');
+    audio.loop = true;
+    audio.volume = 0.5;
+    audio.play().catch(e => console.log("Audio play failed (user interaction needed first):", e));
 
     // Add confetti effect
     createConfetti();
