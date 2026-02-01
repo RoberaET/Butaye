@@ -116,6 +116,10 @@ noBtn.addEventListener('click', function (e) {
 
 // Handle "Yes" button click
 yesBtn.addEventListener('click', function () {
+    // Hide the Yes button and No button to ensure clean view
+    yesBtn.style.display = 'none';
+    noBtn.style.display = 'none';
+
     // Create celebration overlay
     const celebration = document.createElement('div');
     celebration.style.cssText = `
@@ -125,7 +129,7 @@ yesBtn.addEventListener('click', function () {
         width: 100%;
         height: 100%;
         background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ffc0cb 100%);
-        z-index: 10000;
+        z-index: 10000000;
         display: flex;
         flex-direction: column;
         justify-content: center;
